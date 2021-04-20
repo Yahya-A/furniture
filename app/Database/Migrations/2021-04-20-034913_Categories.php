@@ -16,9 +16,15 @@ class Categories extends Migration
 				'unsigned'		=> true,
 				'auto_increment'=>	true,
 			],
-			'name'	=> [
+			'category_name'	=> [
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	100,
+			],
+			'created_at'	=> [
+				'type'			=>	'DATETIME',
+			],
+			'updated_at'	=> [
+				'type'			=>	'DATETIME',
 			],
 		]);
 

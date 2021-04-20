@@ -3,28 +3,40 @@
 namespace App\Controllers;
 
 use App\Models\ModelProduct;
+use App\Models\ModelCategories;
 
 class Product extends BaseController
 {
 
     protected $mProduct;
+    protected $mCategories;
 
     public function __construct()
     {
         $this->mProduct = new ModelProduct();
+        $this->mCategories = new ModelCategories();
     }
 
 	public function new_product()
 	{
-		return view('furniture-admin/master/product/add_product');
+        $categories = $this->mCategories->getCategory();
+        $active = $this->_active_menu('','active','','');
+
+        $data = [
+            'category'=> $categories,
+            'active_menu'   => $active
+        ];
+		return view('furniture-admin/master/product/add_product', $data);
 	}
 
 	public function list_product()
 	{
         $product = $this->mProduct->getProduct();
+        $active = $this->_active_menu('','','active','');
 
         $data   = [
-            'product' => $product
+            'product'       => $product,
+            'active_menu'   => $active
         ];
 
 		return view('furniture-admin/master/product/list_product', $data);
@@ -94,40 +106,16 @@ class Product extends BaseController
         return redirect()->to('list_product');
     }
 
-    // public function save_update()
-    // {
-    //     // \dd($this->request->getVar());
+    private function _active_menu($dashboard = '', $new_product = '', $list_product = '', $categories = ''){
+        $active_menu = [
+            'dashboard'     => $dashboard,
+            'product'       => [
+                'new'   => $new_product,
+                'list'  => $list_product
+            ],
+            'categories'    => $categories
+        ];
 
-    //     $id_prod = $this->request->getPost('id_prod');
-    //     $product_name = $this->request->getPost('product_name');
-    //     $measurment = $this->request->getPost('measurment');
-    //     $width = $this->request->getPost('width');
-    //     $depth = $this->request->getPost('depth');
-    //     $height = $this->request->getPost('height');
-    //     $supplier = $this->request->getPost('supplier');
-    //     $categories = $this->request->getPost('categories');
-    //     $price = $this->request->getPost('price');
-    //     $stock = $this->request->getPost('stock');
-    //     $spesification = $this->request->getPost('spesification');
-    //     $product_picture = $this->request->getFile('product_picture');
-
-    //     $product = [
-    //         'name'      => $product_name,
-    //         'item_code'      => 1,
-    //         'id_categories'      => 1,
-    //         'width'      => $width,
-    //         'depth'      => $depth,
-    //         'height'      => $height,
-    //         'spesififcatoin'      => $spesification,
-    //         'supplier'      => $supplier,
-    //         'price'      => $price,
-    //         'stock'      => $stock,
-    //         'picture'      => $product_picture->getName(),
-            
-    //     ];
-        
-    //     $this->mProduct->save($product);
-
-    //     return redirect()->to('product/new_product');
-    // }
+        return $active_menu;
+    }
 }

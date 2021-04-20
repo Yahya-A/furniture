@@ -12,47 +12,6 @@
             <div class="col-md-12 col-xl-12">
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="account" role="tabpanel">
-
-                        <!-- <div class="card">
-                            <div class="card-header">
-
-                                <h5 class="card-title mb-0">Product Info</h5>
-                            </div>
-                            <div class="card-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="inputUsername">Username</label>
-                                                <input type="text" class="form-control" id="inputUsername"
-                                                    placeholder="Username">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="inputUsername">Biography</label>
-                                                <textarea rows="2" class="form-control" id="inputBio"
-                                                    placeholder="Tell something about yourself"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <img alt="Charles Hall" src="img/avatars/avatar.jpg"
-                                                    class="rounded-circle img-responsive mt-2" width="128"
-                                                    height="128" />
-                                                <div class="mt-2">
-                                                    <span class="btn btn-primary">Upload</span>
-                                                </div>
-                                                <small>For best results, use an image at least 128px by
-                                                    128px in .jpg format</small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </form>
-
-                            </div>
-                        </div> -->
-
                         <div class="card">
                             <div class="card-header">
 
@@ -100,9 +59,9 @@
                                             <label class="form-label" for="categories">Categories</label>
                                             <select id="categories" name="categories" class="form-control">
                                                 <option selected>Choose...</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
+                                                <?php foreach($category as $c):?>
+                                                <option value="<?= $c['id_categories']?>"><?= $c['category_name']?></option>
+                                                <?php endforeach;?>
                                             </select>
                                         </div>
                                         <div class="mb-3 col-md-3">
