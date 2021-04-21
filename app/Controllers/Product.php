@@ -20,7 +20,7 @@ class Product extends BaseController
 	public function new_product()
 	{
         $categories = $this->mCategories->getCategory();
-        $active = $this->_active_menu('','active','','');
+        $active = \menu('','','','active','','');
 
         $data = [
             'category'=> $categories,
@@ -32,7 +32,7 @@ class Product extends BaseController
 	public function list_product()
 	{
         $product = $this->mProduct->getProduct();
-        $active = $this->_active_menu('','','active','');
+        $active = \menu('','','','','active','');
 
         $data   = [
             'product'       => $product,
@@ -45,14 +45,24 @@ class Product extends BaseController
 	public function update_product()
 	{
         $id_prod = \base64_decode($this->request->getGet('id'));
+        $active = \menu('','','','','active','');
 
         $product = $this->mProduct->getProduct($id_prod);
         $data   = [
-            'product' => $product
+            'product' => $product,
+            'active_menu'   => $active
         ];
         // \dd($data);
 		return view('furniture-admin/master/product/update_product', $data);
 	}
+
+    public function delete_product(){
+        $id_product = base64_decode($this->request->getGet('id'));
+
+        $this->mProduct->delete($id_product);
+
+        return redirect()->to('list_product');
+    }
 
     public function save_product()
     {
@@ -104,18 +114,5 @@ class Product extends BaseController
         $this->mProduct->save($product);
 
         return redirect()->to('list_product');
-    }
-
-    private function _active_menu($dashboard = '', $new_product = '', $list_product = '', $categories = ''){
-        $active_menu = [
-            'dashboard'     => $dashboard,
-            'product'       => [
-                'new'   => $new_product,
-                'list'  => $list_product
-            ],
-            'categories'    => $categories
-        ];
-
-        return $active_menu;
     }
 }

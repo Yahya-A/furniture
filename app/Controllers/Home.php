@@ -6,6 +6,11 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		return view('furniture-admin/dashboard');
+		$active = \menu('active');
+		$data = [
+            'active_menu'   => $active
+        ];
+
+		return view('furniture-admin/dashboard', $data);
 	}
 }

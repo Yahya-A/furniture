@@ -42,17 +42,27 @@
                     <li class="sidebar-header">
                         Master
                     </li>
-                    <li class="sidebar-item">
+                    <!-- <li class="sidebar-item">
                         <a class="sidebar-link" href="index.html">
                             <i class="align-middle" data-feather="users"></i> <span
                                 class="align-middle">Customer</span>
                         </a>
-                    </li>
+                    </li> -->
+                    <li class="sidebar-item <?= ($active_menu['customer']['list'] || $active_menu['customer']['new'] != "" ? 'active' : '')?>">
+						<a data-bs-target="#customer" data-bs-toggle="collapse" class="sidebar-link collapsed">
+							<i class="align-middle" data-feather="users"></i> <span class="align-middle">Customer</span>
+						</a>
+						<ul id="customer" class="sidebar-dropdown list-unstyled  <?= ($active_menu['customer']['list'] || $active_menu['customer']['new'] != "" ? 'collapsed' : 'collapse')?>" data-bs-parent="#sidebar">
+							<li class="sidebar-item <?= $active_menu['customer']['new']?>"><a class="sidebar-link" href="/customer/new_customer">New Customer</a></li>
+							<li class="sidebar-item <?= $active_menu['customer']['list']?>"><a class="sidebar-link" href="/customer/list_customer">List Customer</a></li>
+							</li>
+						</ul>
+					</li>
                     <li class="sidebar-item <?= ($active_menu['product']['list'] || $active_menu['product']['new'] != "" ? 'active' : '')?>">
-						<a data-bs-target="#ui" data-bs-toggle="collapse" class="sidebar-link collapsed">
+						<a data-bs-target="#product" data-bs-toggle="collapse" class="sidebar-link collapsed">
 							<i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Product</span>
 						</a>
-						<ul id="ui" class="sidebar-dropdown list-unstyled  <?= ($active_menu['product']['list'] || $active_menu['product']['new'] != "" ? 'collapsed' : 'collapse')?>" data-bs-parent="#sidebar">
+						<ul id="product" class="sidebar-dropdown list-unstyled  <?= ($active_menu['product']['list'] || $active_menu['product']['new'] != "" ? 'collapsed' : 'collapse')?>" data-bs-parent="#sidebar">
 							<li class="sidebar-item <?= $active_menu['product']['new']?>"><a class="sidebar-link" href="/product/new_product">New Product</a></li>
 							<li class="sidebar-item <?= $active_menu['product']['list']?>"><a class="sidebar-link" href="/product/list_product">List Product</a></li>
 							</li>

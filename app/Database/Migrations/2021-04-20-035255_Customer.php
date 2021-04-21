@@ -40,7 +40,11 @@ class Customer extends Migration
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	255,
 			],
-			'street'	=> [
+			'st_address'	=> [
+				'type'			=>	'VARCHAR',
+				'constraint'	=>	100,
+			],
+			'city'	=> [
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	100,
 			],
@@ -48,7 +52,11 @@ class Customer extends Migration
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	100,
 			],
-			'zip_code'	=> [
+			'country'	=> [
+				'type'			=>	'VARCHAR',
+				'constraint'	=>	100,
+			],
+			'post_code'	=> [
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	100,
 			],
@@ -60,9 +68,27 @@ class Customer extends Migration
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	50,
 			],
-			'user_type'	=> [
+			'extension'	=> [
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	50,
+			],
+			'fax'	=> [
+				'type'			=>	'VARCHAR',
+				'constraint'	=>	50,
+			],
+			'customer_group'	=> [
+				'type'			=>	'VARCHAR',
+				'constraint'	=>	50,
+			],
+			'allow_login'	=> [
+				'type'			=>	'ENUM',
+				'constraint'	=>	['1', '0'],
+			],
+			'created_at'	=> [
+				'type'			=>	'DATETIME',
+			],
+			'updated_at'	=> [
+				'type'			=>	'DATETIME',
 			],
 		]);
 
