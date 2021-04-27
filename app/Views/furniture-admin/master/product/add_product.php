@@ -14,7 +14,6 @@
                     <div class="tab-pane fade show active" id="account" role="tabpanel">
                         <div class="card">
                             <div class="card-header">
-
                                 <h5 class="card-title mb-0">Product Info</h5>
                             </div>
                             <div class="card-body">
@@ -32,6 +31,11 @@
                                                 <option selected>Choose...</option>
                                                 <option value="standard">Standard</option>
                                             </select>
+                                        </div>
+                                        <div class="mb-3 col-md-1">
+                                            <label class="form-label" for="width">Weight</label>
+                                            <input type="text" class="form-control" name="weight" id="weight"
+                                                placeholder="0 cm">
                                         </div>
                                         <div class="mb-3 col-md-1">
                                             <label class="form-label" for="width">Width</label>
@@ -82,10 +86,10 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="text-center">
-                                            <img alt="Charles Hall" src="/assets/img/avatars/avatar.jpg"
-                                                class="rounded-circle img-responsive mt-2" width="100%" height="auto" />
+                                            <img src="/assets/img/product/default.png" alt="Preview Product" id="preview_product"
+                                                class=" img-responsive mt-2" width="100%" height="auto" />
                                             <div class="mt-2">
-                                                <input type="file" name="product_picture">
+                                                <input type="file" id="product_picture" name="product_picture" onchange="previewImg()">
                                                 <!-- <span class="btn btn-primary">Upload</span> -->
                                             </div>
                                             <small>For best results, use an image at least 128px by
@@ -106,4 +110,28 @@
     </div>
 </main>
 
+<?= $this->endSection(); ?>
+
+<?= $this->section('config') ?>
+    <script type="text/javascript">
+        function previewImg() {
+            const prod = document.querySelector('#product_picture');
+            const imgPreview = document.querySelector('#preview_product');
+            // const uploadName = document.querySelector('.upload-name');
+            // uploadName.textContent = ava.files[0].name;
+
+            const img = new FileReader();
+            img.readAsDataURL(prod.files[0]);
+
+
+            console.log(img);
+            img.onload = function(e) {
+                // let path = e.target.result;
+                let name = prod.files[0].name;
+                imgPreview.src = e.target.result;
+                // localStorage.setItem('temppath', path);
+                // // localStorage.setItem('tempname', name);
+            }
+        }
+    </script>
 <?= $this->endSection(); ?>

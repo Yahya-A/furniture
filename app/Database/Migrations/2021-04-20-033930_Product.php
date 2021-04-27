@@ -32,6 +32,10 @@ class Product extends Migration
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	100,
 			],
+			'weight'	=> [
+				'type'			=>	'VARCHAR',
+				'constraint'	=>	5,
+			],
 			'width'	=> [
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	5,

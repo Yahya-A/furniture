@@ -1,6 +1,6 @@
 <?php
 
-function menu($dashboard = '', $new_customer = '', $list_customer = '', $new_product = '', $list_product = '', $categories = ''){
+function menu($dashboard = '', $new_customer = '', $list_customer = '', $new_product = '', $list_product = '', $categories = '', $item_order = '', $showroom_order = ''){
         $active_menu = [
             'dashboard'     => $dashboard,
             'customer'       => [
@@ -9,9 +9,13 @@ function menu($dashboard = '', $new_customer = '', $list_customer = '', $new_pro
             ],
             'product'       => [
                 'new'   => $new_product,
-                'list'  => $list_product
+                'list'  => $list_product,
+                'categories'    => $categories,
             ],
-            'categories'    => $categories
+            'order'       => [
+                'item_order'   => $item_order,
+                'showroom_order'  => $showroom_order
+            ],
         ];
 
         return $active_menu;

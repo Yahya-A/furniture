@@ -27,25 +27,25 @@
                         <tbody>
                             <?php 
                             $no = 1;
-                            foreach($category as $c):
+                            foreach($price as $p):
                             ?>
                             <tr>
-                                <?php if (empty($c)) :?>
+                                <?php if (empty($p)) :?>
                                 <td class="d-none d-sm-table-cell" colspan="2">Belum Ada Data</td>
                                 <td>
                                     <?php else :?>
                                 <td class="d-none d-sm-table-cell"><?= $no; ?>
                                 <td>
-                                    <?= $c['category_name']?>
+                                    <?= $p['category_name']?>
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm" role="group">
-                                        <a class="btn btn-secondary btn-sm" href="/product/categories?q=<?= base64_encode($c['id_categories'])?>">See Product</a>
+                                        <a class="btn btn-secondary btn-sm" href="/product/categories?q=<?= base64_encode($p['id_categories'])?>">See Product</a>
                                         <a class="btn btn-secondary btn-sm" data-toggle="modal"
-                                            data-target="#updateCategoryModal<?= $c['id_categories']?>"><i
+                                            data-target="#updateCategoryModal<?= $p['id_categories']?>"><i
                                                 data-feather="edit"></i></a>
                                         <a class="btn btn-secondary btn-sm" data-toggle="modal"
-                                            data-target="#deleteCategoryModal<?= $c['id_categories']?>"><i
+                                            data-target="#deleteCategoryModal<?= $p['id_categories']?>"><i
                                                 data-feather="trash-2"></i></a>
                                     </div>
                                 </td>
@@ -102,8 +102,8 @@
 
 
 <!-- Modal Edit -->
-<?php foreach($category as $c):?>
-<div class="modal fade" id="updateCategoryModal<?= $c['id_categories']?>" tabindex="-1" role="dialog"
+<?php foreach($price as $p):?>
+<div class="modal fade" id="updateCategoryModal<?= $p['id_price']?>" tabindex="-1" role="dialog"
     aria-labelledby="newCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -115,14 +115,14 @@
             </div>
             <form action="/categories/save_category" method="post">
 
-                <input type="hidden" name="id_categories" value="<?= $c['id_categories']?>">
+                <input type="hidden" name="id_categories" value="<?= $p['id_categories']?>">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label class="form-label" for="categoryName">Category Name</label>
                                 <input type="text" name="category_name" class="form-control" id="categoryName"
-                                    value="<?= $c['category_name']?>" placeholder="Tables">
+                                    value="<?= $p['category_name']?>" placeholder="Tables">
                             </div>
                         </div>
                     </div>
@@ -140,8 +140,8 @@
 
 
 <!-- Modal Delete -->
-<?php foreach($category as $c):?>
-<div class="modal fade" id="deleteCategoryModal<?= $c['id_categories']?>" tabindex="-1" role="dialog"
+<?php foreach($pategory as $p):?>
+<div class="modal fade" id="deleteCategoryModal<?= $p['id_categories']?>" tabindex="-1" role="dialog"
     aria-labelledby="newCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -163,7 +163,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a class="btn btn-danger" href="/categories/delete_category?id=<?= base64_encode($c['id_categories'])?>">Delete</a>
+                <a class="btn btn-danger" href="/categories/delete_category?id=<?= base64_encode($p['id_categories'])?>">Delete</a>
             </div>
             </form>
         </div>

@@ -17,6 +17,20 @@ class Product extends BaseController
         $this->mCategories = new ModelCategories();
     }
 
+	public function categories()
+	{
+        $id_categories = \base64_decode($this->request->getGet('q'));
+        // \dd($id_categories);
+        $product = $this->mProduct->getProductBy($id_categories);
+        $active = \menu('','','','','active','');
+
+        $data = [
+            'product'=> $product,
+            'active_menu'   => $active
+        ];
+		return view('furniture-admin/master/product/list_product_categories', $data);
+	}
+
 	public function new_product()
 	{
         $categories = $this->mCategories->getCategory();
@@ -70,6 +84,7 @@ class Product extends BaseController
         
         $product_name = $this->request->getPost('product_name');
         $measurment = $this->request->getPost('measurment');
+        $weight = $this->request->getPost('weight');
         $width = $this->request->getPost('width');
         $depth = $this->request->getPost('depth');
         $height = $this->request->getPost('height');
@@ -80,12 +95,20 @@ class Product extends BaseController
         $spesification = $this->request->getPost('spesification');
         $product_picture = $this->request->getFile('product_picture');
 
+        if ($product_picture->getError() == 4) {
+            $file_name = 'default.png';
+        } else {
+            $file_name = $product_picture->getRandomName();
+            $product_picture->move('assets/img/product/', $file_name);
+        }
+
         if (!empty($id_prod)) {
                 $product = [
                     'id_prod'   => $id_prod,
                     'name'      => $product_name,
                     'item_code'      => 1,
                     'id_categories'      => 1,
+                    'weight'      => $weight,
                     'width'      => $width,
                     'depth'      => $depth,
                     'height'      => $height,
@@ -93,13 +116,14 @@ class Product extends BaseController
                     'supplier'      => $supplier,
                     'price'      => $price,
                     'stock'      => $stock,
-                    'picture'      => $product_picture->getName(),
+                    'picture'      => $file_name,
                 ];
         }else{
                 $product = [
-                'name'      => $product_name,
+                'name'        => $product_name,
                 'item_code'      => 1,
                 'id_categories'      => 1,
+                'weight'      => $weight,
                 'width'      => $width,
                 'depth'      => $depth,
                 'height'      => $height,
@@ -107,7 +131,7 @@ class Product extends BaseController
                 'supplier'      => $supplier,
                 'price'      => $price,
                 'stock'      => $stock,
-                'picture'      => $product_picture->getName(),
+                'picture'      => $file_name,
             ];
         }
 

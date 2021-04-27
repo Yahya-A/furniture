@@ -24,6 +24,25 @@ class Orders extends Migration
 				'type'			=>	'INT',
 				'constraint'	=>	12,
 			],
+			'weight'	=> [
+				'type'			=>	'VARCHAR',
+				'constraint'	=>	5,
+			],
+			'width'	=> [
+				'type'			=>	'VARCHAR',
+				'constraint'	=>	5,
+			],
+			'depth'	=> [
+				'type'			=>	'VARCHAR',
+				'constraint'	=>	5,
+			],
+			'height'	=> [
+				'type'			=>	'VARCHAR',
+				'constraint'	=>	5,
+			],
+			'note'	=> [
+				'type'			=>	'TEXT',
+			],
 			'qty'	=> [
 				'type'			=>	'INT',
 				'constraint'	=>	5,

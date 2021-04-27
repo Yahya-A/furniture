@@ -14,12 +14,18 @@ class Customer extends BaseController
         $this->mCustomer = new ModelCustomer();
     }
 
+    // public function test(){
+    //     echo $_SERVER['HTTP_USER_AGENT'];
+    // }
+
 	public function new_customer()
 	{
         $active = \menu('','active','','','','');
+        $browser = $this->_get_browser($_SERVER['HTTP_USER_AGENT']);
 
         $data = [
-            'active_menu'   => $active
+            'active_menu'   => $active,
+            'browser_name'   => $browser,
         ];
 		return view('furniture-admin/master/customer/add_customer', $data);
 	}
@@ -124,5 +130,26 @@ class Customer extends BaseController
         $this->mCustomer->save($customer);
 
         return redirect()->to('list_customer');
+    }
+
+    private function _get_browser($user_agent){
+        $browser_name;
+        if (strpos($user_agent, 'Opera') || strpos($user_agent, 'OPR/')) {
+            $browser_name = 'Opera';
+        }elseif (strpos($user_agent, 'Edge')) {
+            $browser_name = 'Edge';
+        }elseif (strpos($user_agent, 'Chrome')) {
+            $browser_name = 'Chrome';
+        }elseif (strpos($user_agent, 'Safari')) {
+            $browser_name = 'Safari';
+        }elseif (strpos($user_agent, 'Firefox')) {
+            $browser_name = 'Firefox';
+        }elseif (strpos($user_agent, 'MSIE') || strpos($user_agent, 'Trident/7')) {
+            $browser_name = 'Internet Explorer';
+        }else{
+            $browser_name = 'Other';
+        }
+
+        return $browser_name;
     }
 }

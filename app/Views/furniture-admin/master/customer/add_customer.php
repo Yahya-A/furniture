@@ -141,21 +141,21 @@
                             <div class="row">
                                 <div class="mb-3 col-md-12 d-flex justify-content-between">
                                     <p>Account Created</p>
-                                    <p class="mr-5">12-12-1290</p>
+                                    <p class="mr-5"><?= date("d-m-Y");?></p>
                                 </div>
                                 <div class="mb-3 col-md-12">
                                     <div class="row">
-                                        <div class="d-flex justify-content-between">
+                                        <!-- <div class="d-flex justify-content-between">
                                             <p>Last Login</p>
                                             <p class="mr-5">12-12-1290</p>
-                                        </div>
+                                        </div> -->
                                         <div class="d-flex justify-content-between">
                                             <p>IP Address</p>
-                                            <p class="mr-5">192.168.0.1</p>
+                                            <p class="mr-5"><?= $_SERVER['REMOTE_ADDR'];?></p>
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <p>Browser</p>
-                                            <p class="mr-5">Firefox</p>
+                                            <p class="mr-5"><?= $browser_name ?></p>
                                         </div>
                                     </div>
                                 </div>

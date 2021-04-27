@@ -48,88 +48,109 @@
                                 class="align-middle">Customer</span>
                         </a>
                     </li> -->
-                    <li class="sidebar-item <?= ($active_menu['customer']['list'] || $active_menu['customer']['new'] != "" ? 'active' : '')?>">
-						<a data-bs-target="#customer" data-bs-toggle="collapse" class="sidebar-link collapsed">
-							<i class="align-middle" data-feather="users"></i> <span class="align-middle">Customer</span>
-						</a>
-						<ul id="customer" class="sidebar-dropdown list-unstyled  <?= ($active_menu['customer']['list'] || $active_menu['customer']['new'] != "" ? 'collapsed' : 'collapse')?>" data-bs-parent="#sidebar">
-							<li class="sidebar-item <?= $active_menu['customer']['new']?>"><a class="sidebar-link" href="/customer/new_customer">New Customer</a></li>
-							<li class="sidebar-item <?= $active_menu['customer']['list']?>"><a class="sidebar-link" href="/customer/list_customer">List Customer</a></li>
-							</li>
-						</ul>
-					</li>
-                    <li class="sidebar-item <?= ($active_menu['product']['list'] || $active_menu['product']['new'] != "" ? 'active' : '')?>">
-						<a data-bs-target="#product" data-bs-toggle="collapse" class="sidebar-link collapsed">
-							<i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Product</span>
-						</a>
-						<ul id="product" class="sidebar-dropdown list-unstyled  <?= ($active_menu['product']['list'] || $active_menu['product']['new'] != "" ? 'collapsed' : 'collapse')?>" data-bs-parent="#sidebar">
-							<li class="sidebar-item <?= $active_menu['product']['new']?>"><a class="sidebar-link" href="/product/new_product">New Product</a></li>
-							<li class="sidebar-item <?= $active_menu['product']['list']?>"><a class="sidebar-link" href="/product/list_product">List Product</a></li>
-							</li>
-						</ul>
-					</li>
-                    <li class="sidebar-item <?= $active_menu['categories']?>">
-                        <a class="sidebar-link" href="/categories/list_category">
-                            <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Categories</span>
+                    <li
+                        class="sidebar-item <?= ($active_menu['customer']['list'] || $active_menu['customer']['new'] != "" ? 'active' : '')?>">
+                        <a data-bs-target="#customer" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                            <i class="align-middle" data-feather="users"></i> <span class="align-middle">Customer</span>
                         </a>
+                        <ul id="customer"
+                            class="sidebar-dropdown list-unstyled  <?= ($active_menu['customer']['list'] || $active_menu['customer']['new'] != "" ? 'collapsed' : 'collapse')?>"
+                            data-bs-parent="#sidebar">
+                            <li class="sidebar-item <?= $active_menu['customer']['new']?>"><a class="sidebar-link"
+                                    href="/customer/new_customer">New Customer</a></li>
+                            <li class="sidebar-item <?= $active_menu['customer']['list']?>"><a class="sidebar-link"
+                                    href="/customer/list_customer">List Customer</a></li>
+                            <li class="sidebar-item <?= $active_menu['customer']['list']?>"><a class="sidebar-link"
+                                    href="/pricing/price_list">Pricing Role</a></li>
                     </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="index.html">
-                            <i class="align-middle" data-feather="truck"></i> <span
-                                class="align-middle">Shipping</span>
-                        </a>
-                    </li>
+                </ul>
+                </li>
+                <li
+                    class="sidebar-item <?= ($active_menu['product']['list'] || $active_menu['product']['new'] || $active_menu['product']['categories'] != "" ? 'active' : '')?>">
+                    <a data-bs-target="#product" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                        <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Product</span>
+                    </a>
+                    <ul id="product"
+                        class="sidebar-dropdown list-unstyled  <?= ($active_menu['product']['list'] || $active_menu['product']['new'] || $active_menu['product']['categories'] != "" ? 'collapsed' : 'collapse')?>"
+                        data-bs-parent="#sidebar">
+                        <li class="sidebar-item <?= $active_menu['product']['new']?>"><a class="sidebar-link"
+                                href="/product/new_product">New Product</a></li>
+                        <li class="sidebar-item <?= $active_menu['product']['list']?>"><a class="sidebar-link"
+                                href="/product/list_product">List Product</a></li>
+                        <li class="sidebar-item <?= $active_menu['product']['categories']?>"><a class="sidebar-link"
+                                href="/categories/list_category">Category Product</a></li>
+                </li>
+                </ul>
+                </li>
+             
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="index.html">
+                        <i class="align-middle" data-feather="truck"></i> <span class="align-middle">Shipping</span>
+                    </a>
+                </li>
 
-                    <li class="sidebar-header">
-                        Transactions
-                    </li>
+                <li class="sidebar-header">
+                    Transactions
+                </li>
 
-                    <li class="sidebar-item">
+                <li
+                    class="sidebar-item <?= ($active_menu['order']['item_order'] || $active_menu['order']['showroom_order'] != "" ? 'active' : '')?>">
+                    <a data-bs-target="#order" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                        <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Order</span>
+                    </a>
+                    <ul id="order"
+                        class="sidebar-dropdown list-unstyled  <?= ($active_menu['order']['item_order'] || $active_menu['order']['showroom_order'] != "" ? 'collapsed' : 'collapse')?>"
+                        data-bs-parent="#sidebar">
+                        <li class="sidebar-item <?= $active_menu['order']['item_order']?>"><a class="sidebar-link"
+                                href="/order/list_item_order">Item Order</a></li>
+                        <li class="sidebar-item <?= $active_menu['order']['showroom_order']?>"><a class="sidebar-link"
+                                href="/customer/list_customer">Showroom Order</a></li>
+                </li>
+                </ul>
+                <!-- <li class="sidebar-item">
                         <a class="sidebar-link" href="charts-chartjs.html">
                             <i class="align-middle" data-feather="shopping-bag"></i> <span
                                 class="align-middle">Order</span>
                         </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="charts-chartjs.html">
-                            <i class="align-middle" data-feather="rotate-ccw"></i> <span class="align-middle">Return
-                                Order</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="charts-chartjs.html">
-                            <i class="align-middle" data-feather="file"></i> <span
-                                class="align-middle">Report</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-header">
-                        More
-                    </li>
+                    </li> -->
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="charts-chartjs.html">
+                        <i class="align-middle" data-feather="rotate-ccw"></i> <span class="align-middle">Return
+                            Order</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="charts-chartjs.html">
+                        <i class="align-middle" data-feather="file"></i> <span class="align-middle">Report</span>
+                    </a>
+                </li>
+                <li class="sidebar-header">
+                    More
+                </li>
 
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="charts-chartjs.html">
-                            <i class="align-middle" data-feather="bar-chart-2"></i> <span
-                                class="align-middle">Setting</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="charts-chartjs.html">
-                            <i class="align-middle" data-feather="bar-chart-2"></i> <span
-                                class="align-middle">Logs</span>
-                        </a>
-                    </li>
-                    <div class="sidebar-cta">
-                        <div class="sidebar-cta-content">
-                            <strong class="d-inline-block mb-2 text-center">Furniture Admin</strong>
-                            <!-- <div class="mb-3 text-sm">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="charts-chartjs.html">
+                        <i class="align-middle" data-feather="bar-chart-2"></i> <span
+                            class="align-middle">Setting</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="charts-chartjs.html">
+                        <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Logs</span>
+                    </a>
+                </li>
+                <div class="sidebar-cta">
+                    <div class="sidebar-cta-content">
+                        <strong class="d-inline-block mb-2 text-center">Furniture Admin</strong>
+                        <!-- <div class="mb-3 text-sm">
                                 Are you looking for more components? Check out our premium version.
                             </div>
                             <div class="d-grid">
                                 <a href="https://adminkit.io/pricing" target="_blank" class="btn btn-primary">Upgrade to
                                     Pro</a>
                             </div> -->
-                        </div>
                     </div>
+                </div>
                 </ul>
             </div>
 
@@ -361,9 +382,12 @@
         </div>
     </div>
 
-    <script src="/assets/js/jquery-3.6.0.min.js"></script> 
+
+    <script src="/assets/js/jquery-3.6.0.min.js"></script>
     <script src="/assets/js/app.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <?= $this->renderSection('config'); ?>
 </body>
 
 </html>
