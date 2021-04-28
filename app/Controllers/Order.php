@@ -24,7 +24,7 @@ class Order extends BaseController
 	}
 
 	public function list_item_order(){
-		$active = \menu('','','','','','','active','');
+		$active = \menu('item_order');
 		$orders = $this->mOrder->getOrder();
 		$data = [
             'active_menu'   => $active,
@@ -37,7 +37,7 @@ class Order extends BaseController
 	public function item_order(){
 		$id_order = \base64_decode($this->request->getGet('id'));
 
-		$active = \menu('','','','','','','active','');
+		$active = \menu('item_order');
 		$order = $this->mOrder->getOrder($id_order);
 		$data = [
             'active_menu'   => $active,

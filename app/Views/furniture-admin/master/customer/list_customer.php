@@ -41,7 +41,7 @@
                                 <p>Last Login : 12/12/1290</p>
                                 <p>Allow Login : <?= ($c['allow_login'] == 1 ? 'Yes' : 'No')?></p>
                                 </td>
-                                <td class="d-none d-lg-table-cell"><?= strtoupper($c['customer_group'])?></td>
+                                <td class="d-none d-lg-table-cell"><?= strtoupper($c['price_name'])?></td>
                                 <td>
                                     <div class="btn-group-vertical btn-group-sm" role="group">
                                         <a class="btn btn-secondary btn-sm" href="#"><i data-feather="info"></i></a>

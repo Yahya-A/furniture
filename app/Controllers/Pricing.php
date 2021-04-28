@@ -17,7 +17,7 @@ class Pricing extends BaseController
 
 	public function price_list()
 	{
-		$active = \menu('','active','','','','');
+		$active = \menu('price');
 		$price = $this->mPricing->getPrice();
 		$data = [
             'active_menu'   => $active,
@@ -26,4 +26,40 @@ class Pricing extends BaseController
 
 		return view('furniture-admin/master/customer/pricing_list', $data);
 	}
+
+	public function delete_price(){
+        $id_price = base64_decode($this->request->getGet('id'));
+
+        $this->mPricing->delete($id_price);
+
+        return redirect()->to('price_list');
+    }
+
+	public function save_price()
+    {
+        $id_price = $this->request->getPost('id_price');
+        
+        $price_name = $this->request->getPost('price_name');
+        $desc = $this->request->getPost('desc');
+        $rate = $this->request->getPost('rate');
+
+        if (!empty($id_price)) {
+                $price = [
+                    'id_pricing'   => $id_price,
+                    'price_name'      => $price_name,
+                    'description'      => $desc,
+                    'rate'      => $rate,
+                ];
+        }else{
+                $price = [
+                    'price_name'      => $price_name,
+                    'description'      => $desc,
+                    'rate'      => $rate,
+                ];
+        }
+
+        $this->mPricing->save($price);
+
+        return redirect()->to('price_list');
+    }
 }

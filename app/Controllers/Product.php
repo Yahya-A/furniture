@@ -22,7 +22,7 @@ class Product extends BaseController
         $id_categories = \base64_decode($this->request->getGet('q'));
         // \dd($id_categories);
         $product = $this->mProduct->getProductBy($id_categories);
-        $active = \menu('','','','','active','');
+        $active = \menu('categories');
 
         $data = [
             'product'=> $product,
@@ -34,7 +34,7 @@ class Product extends BaseController
 	public function new_product()
 	{
         $categories = $this->mCategories->getCategory();
-        $active = \menu('','','','active','','');
+        $active = \menu('product_new');
 
         $data = [
             'category'=> $categories,
@@ -46,7 +46,7 @@ class Product extends BaseController
 	public function list_product()
 	{
         $product = $this->mProduct->getProduct();
-        $active = \menu('','','','','active','');
+        $active = \menu('product_list');
 
         $data   = [
             'product'       => $product,
@@ -59,7 +59,7 @@ class Product extends BaseController
 	public function update_product()
 	{
         $id_prod = \base64_decode($this->request->getGet('id'));
-        $active = \menu('','','','','active','');
+        $active = \menu('product_list');
 
         $product = $this->mProduct->getProduct($id_prod);
         $data   = [

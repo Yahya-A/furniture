@@ -9,7 +9,7 @@ class ModelPricing extends Model
     protected $table = 'pricing';
     protected $primaryKey = 'id_price';
 
-    protected $allowedFields = ['id_price', 'customer_group', 'description', 'rate'];
+    protected $allowedFields = ['id_price', 'price_name', 'description', 'rate'];
     protected $useTimestamps = true;
 
     public function getPrice($id_price = false)

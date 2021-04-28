@@ -16,7 +16,7 @@ class Pricing extends Migration
 				'unsigned'		=> true,
 				'auto_increment'=>	true,
 			],
-			'customer_group'	=> [
+			'price_name'	=> [
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	50,
 			],
@@ -26,6 +26,12 @@ class Pricing extends Migration
 			'rate'	=> [
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	5
+			],
+			'created_at'	=> [
+				'type'			=>	'DATETIME',
+			],
+			'updated_at'	=> [
+				'type'			=>	'DATETIME',
 			],
 		]);
 

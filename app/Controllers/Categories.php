@@ -16,7 +16,7 @@ class Categories extends BaseController
 
 	public function new_category()
 	{
-        $active = \menu('','','','','','active');
+        $active = \menu('categories');
 
         $data   = [
             'active_menu'   => $active
@@ -28,7 +28,7 @@ class Categories extends BaseController
 	public function list_category()
 	{
         $category = $this->mCategories->getCategory();
-        $active = \menu('','','','','','active');
+        $active = \menu('categories');
 
         $data   = [
             'category' => $category,

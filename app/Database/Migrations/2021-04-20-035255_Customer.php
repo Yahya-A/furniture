@@ -32,14 +32,6 @@ class Customer extends Migration
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	100,
 			],
-			'email'	=> [
-				'type'			=>	'VARCHAR',
-				'constraint'	=>	50,
-			],
-			'password'	=> [
-				'type'			=>	'VARCHAR',
-				'constraint'	=>	255,
-			],
 			'st_address'	=> [
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	100,
@@ -77,12 +69,8 @@ class Customer extends Migration
 				'constraint'	=>	50,
 			],
 			'customer_group'	=> [
-				'type'			=>	'VARCHAR',
-				'constraint'	=>	50,
-			],
-			'allow_login'	=> [
-				'type'			=>	'ENUM',
-				'constraint'	=>	['1', '0'],
+				'type'			=>	'INT',
+				'constraint'	=>	12,
 			],
 			'created_at'	=> [
 				'type'			=>	'DATETIME',

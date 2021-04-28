@@ -7,8 +7,8 @@
         <div class="row mb-3">
             <div class="col-md-12 d-inline-flex justify-content-between">
                 <h1 class="h3 mb-3">List Category</h1>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCategoryModal">New
-                    Categories</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPriceModal">New
+                    Price</button>
             </div>
         </div>
         <div class="row">
@@ -20,7 +20,9 @@
                         <thead>
                             <tr>
                                 <th width="5%">No</th>
-                                <th>Name/Model</th>
+                                <th>Namel</th>
+                                <th>Description</th>
+                                <th>Rate</th>
                                 <th width="20%"></th>
                             </tr>
                         </thead>
@@ -36,16 +38,22 @@
                                     <?php else :?>
                                 <td class="d-none d-sm-table-cell"><?= $no; ?>
                                 <td>
-                                    <?= $p['category_name']?>
+                                    <?= $p['price_name']?>
+                                </td>
+                                <td>
+                                    <?= $p['description']?>
+                                </td>
+                                <td>
+                                    <?= $p['rate']?>%
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm" role="group">
-                                        <a class="btn btn-secondary btn-sm" href="/product/categories?q=<?= base64_encode($p['id_categories'])?>">See Product</a>
+                                        <!-- <a class="btn btn-secondary btn-sm" href="/product/categories?q=">See Product</a> -->
                                         <a class="btn btn-secondary btn-sm" data-toggle="modal"
-                                            data-target="#updateCategoryModal<?= $p['id_categories']?>"><i
+                                            data-target="#updatePriceModal<?= $p['id_price']?>"><i
                                                 data-feather="edit"></i></a>
                                         <a class="btn btn-secondary btn-sm" data-toggle="modal"
-                                            data-target="#deleteCategoryModal<?= $p['id_categories']?>"><i
+                                            data-target="#deletePriceModal<?= $p['id_price']?>"><i
                                                 data-feather="trash-2"></i></a>
                                     </div>
                                 </td>
@@ -69,24 +77,33 @@
 <?= $this->section('modal'); ?>
 
 <!-- Modal -->
-<div class="modal fade" id="newCategoryModal" tabindex="-1" role="dialog" aria-labelledby="newCategoryModalLabel"
+<div class="modal fade" id="newPriceModal" tabindex="-1" role="dialog" aria-labelledby="newPriceModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="CategoryModalLabel">Add Category</h5>
+                <h5 class="modal-title" id="PriceModalLabel">Add Price</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/categories/save_category" method="post">
+            <form action="/pricing/save_price" method="post">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mb-3">
-                                <label class="form-label" for="categoryName">Category Name</label>
-                                <input type="text" name="category_name" class="form-control" id="categoryName"
-                                    placeholder="Tables">
+                                <label class="form-label" for="priceName">Name</label>
+                                <input type="text" name="price_name" class="form-control" id="priceName"
+                                    placeholder="Wholesale">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="desc">Description</label>
+                                <input type="text" name="desc" class="form-control" id="desc"
+                                    placeholder="Wholesale price">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="rate">Rate <small>in %</small></label>
+                                <input type="text" name="rate" class="form-control" id="rate" placeholder="0">
                             </div>
                         </div>
                     </div>
@@ -103,31 +120,37 @@
 
 <!-- Modal Edit -->
 <?php foreach($price as $p):?>
-<div class="modal fade" id="updateCategoryModal<?= $p['id_price']?>" tabindex="-1" role="dialog"
-    aria-labelledby="newCategoryModalLabel" aria-hidden="true">
+<div class="modal fade" id="updatePriceModal<?= $p['id_price']?>" tabindex="-1" role="dialog"
+    aria-labelledby="newPriceModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="CategoryModalLabel">Update Category</h5>
+                <h5 class="modal-title" id="PriceModalLabel">Update Price</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/categories/save_category" method="post">
-
-                <input type="hidden" name="id_categories" value="<?= $p['id_categories']?>">
+            <form action="/pricing/save_price" method="post">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mb-3">
-                                <label class="form-label" for="categoryName">Category Name</label>
-                                <input type="text" name="category_name" class="form-control" id="categoryName"
-                                    value="<?= $p['category_name']?>" placeholder="Tables">
+                                <label class="form-label" for="priceName">Name</label>
+                                <input type="text" name="price_name" class="form-control" id="priceName"
+                                    placeholder="Wholesale" value="<?= $p['price_name']?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="desc">Description</label>
+                                <input type="text" name="desc" class="form-control" id="desc"
+                                    placeholder="Wholesale price" value="<?= $p['description']?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="rate">Rate <small>in %</small></label>
+                                <input type="text" name="rate" class="form-control" id="rate" placeholder="0" value="<?= $p['rate']?>">
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save Category</button>
@@ -140,13 +163,13 @@
 
 
 <!-- Modal Delete -->
-<?php foreach($pategory as $p):?>
-<div class="modal fade" id="deleteCategoryModal<?= $p['id_categories']?>" tabindex="-1" role="dialog"
-    aria-labelledby="newCategoryModalLabel" aria-hidden="true">
+<?php foreach($price as $p):?>
+<div class="modal fade" id="deletePriceModal<?= $p['id_price']?>" tabindex="-1" role="dialog"
+    aria-labelledby="newPriceModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-danger">
-                <h5 class="modal-title text-white" id="CategoryModalLabel">Delete Category</h5>
+                <h5 class="modal-title text-white" id="PriceModalLabel">Delete Category</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -163,7 +186,8 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a class="btn btn-danger" href="/categories/delete_category?id=<?= base64_encode($p['id_categories'])?>">Delete</a>
+                <a class="btn btn-danger"
+                    href="/pricing/delete_price?id=<?= base64_encode($p['id_price'])?>">Delete</a>
             </div>
             </form>
         </div>

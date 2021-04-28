@@ -9,6 +9,8 @@
 
         <form action="/customer/save_customer" method="post">
         <input type="hidden" name="id_customer">
+        <input type="hidden" name="role" value="customer">
+        <input type="hidden" name="is_approve" value="1">
             <div class="row">
                 <div class="col-md-6 col-xl-6">
                     <div class="card">
@@ -40,10 +42,9 @@
                                     <label class="form-label" for="cusGroup">Customer Group</label>
                                     <select id="cusGroup" class="form-control" name="customer_group">
                                         <option selected>Choose...</option>
-                                        <option value="wholesale">Wholesale</option>
-                                        <option value="designer">Designer</option>
-                                        <option value="hospitality">Hospitality</option>
-                                        <option value="none">None</option>
+                                        <?php foreach($price as $pr):?>
+                                        <option value="<?= $pr['id_price']?>"><?= $pr['price_name']?></option>
+                                        <?php endforeach;?>
                                     </select>
                                 </div>
                             </div>

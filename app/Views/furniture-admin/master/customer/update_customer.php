@@ -7,6 +7,8 @@
 
         <h1 class="h3 mb-3">Update Customer</h1>
         <form action="/customer/save_customer" method="post">
+        <input type="hidden" name="role" value="customer">
+        <input type="hidden" name="is_approve" value="1">
         <input type="hidden" name="id_customer" value="<?= $customer['id_customer']?>">
             <div class="row">
                 <div class="col-md-6 col-xl-6">
@@ -39,10 +41,9 @@
                                     <label class="form-label" for="cusGroup">Customer Group</label>
                                     <select id="cusGroup" class="form-control" name="customer_group">
                                         <option selected>Choose...</option>
-                                        <option value="wholesale" <?= ($customer['customer_group'] == 'wholesale' ? 'selected' : '')?>>Wholesale</option>
-                                        <option value="designer" <?= ($customer['customer_group'] == 'designer' ? 'selected' : '')?>>Designer</option>
-                                        <option value="hospitality" <?= ($customer['customer_group'] == 'hospitality' ? 'selected' : '')?>>Hospitality</option>
-                                        <option value="none" <?= ($customer['customer_group'] == 'none' ? 'selected' : '')?>>None</option>
+                                        <?php foreach($price as $pr):?>
+                                        <option value="<?= $pr['id_price']?>" <?= ($pr['id_price'] == $customer['id_price'] ? 'selected' : '')?>><?= $pr['price_name']?></option>
+                                        <?php endforeach;?>
                                     </select>
                                 </div>
                             </div>

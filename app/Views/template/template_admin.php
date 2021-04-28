@@ -60,7 +60,7 @@
                                     href="/customer/new_customer">New Customer</a></li>
                             <li class="sidebar-item <?= $active_menu['customer']['list']?>"><a class="sidebar-link"
                                     href="/customer/list_customer">List Customer</a></li>
-                            <li class="sidebar-item <?= $active_menu['customer']['list']?>"><a class="sidebar-link"
+                            <li class="sidebar-item <?= $active_menu['customer']['price']?>"><a class="sidebar-link"
                                     href="/pricing/price_list">Pricing Role</a></li>
                     </li>
                 </ul>

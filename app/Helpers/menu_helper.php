@@ -1,20 +1,23 @@
 <?php
 
-function menu($dashboard = '', $new_customer = '', $list_customer = '', $new_product = '', $list_product = '', $categories = '', $item_order = '', $showroom_order = ''){
+function menu($for){
+
+
         $active_menu = [
-            'dashboard'     => $dashboard,
+            'dashboard'     => ($for == 'dashboard' ? 'active' : ''),
             'customer'       => [
-                'new'   => $new_customer,
-                'list'  => $list_customer
+                'new'   => ($for == 'customer_new' ? 'active' : ''),
+                'list'  => ($for == 'customer_list' ? 'active' : ''),
+                'price'  => ($for == 'price' ? 'active' : ''),
             ],
             'product'       => [
-                'new'   => $new_product,
-                'list'  => $list_product,
-                'categories'    => $categories,
+                'new'   => ($for == 'product_new' ? 'active' : ''),
+                'list'  => ($for == 'product_list' ? 'active' : ''),
+                'categories'    => ($for == 'categories' ? 'active' : ''),
             ],
             'order'       => [
-                'item_order'   => $item_order,
-                'showroom_order'  => $showroom_order
+                'item_order'   => ($for == 'item_order' ? 'active' : ''),
+                'showroom_order'  => ($for == 'showroom' ? 'active' : '')
             ],
         ];
 
