@@ -69,6 +69,12 @@ class Orders extends Migration
 				'type'			=>	'INT',
 				'constraint'	=>	12,
 			],
+			'created_at'	=> [
+				'type'			=>	'DATETIME',
+			],
+			'updated_at'	=> [
+				'type'			=>	'DATETIME',
+			],
 		]);
 
 		$this->forge->addKey('id_order', true);

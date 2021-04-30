@@ -21,9 +21,15 @@ class ModelProduct extends Model
         return $this->where([$this->primaryKey => $id_prod])->first();
     }
 
-    public function getProductBy($id_categories = false)
+    public function getProductBy($key = false, $by = '')
     {
-        $this->where('id_categories', $id_categories);
-        return $this->findAll();
+        if ($by == 'name') {
+            $this->like('name', $key);
+            $this->orderBy('name');
+            return $this->findAll(5);
+        } else{
+            $this->where('id_categories', $key);
+            return $this->findAll();
+        }
     }
 }

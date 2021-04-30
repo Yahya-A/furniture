@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ModelCategories extends Model
+class ModelSubCategories extends Model
 {
-    protected $table = 'categories';
-    protected $primaryKey = 'id_categories';
+    protected $table = 'sub_categories';
+    protected $primaryKey = 'id';
 
-    protected $allowedFields = ['id_categories', 'parent_category'];
+    protected $allowedFields = ['id_categories', 'sub_category'];
     protected $useTimestamps = true;
 
-    public function getCategory($id_categories = false)
+    public function getSubCategory($id_categories = false)
     {
         if ($id_categories == false) {
             return $this->findAll();

@@ -7,7 +7,7 @@
 
         <div class="header mb-3">
             <h1 class="h3 mb-2">Order Item</h1>
-            <a href="" class="btn btn-md btn-secondary">Back</a>
+            <a href="/order/list_item_order" class="btn btn-md btn-secondary">Back</a>
             <a href="" class="btn btn-md btn-warning">Message Board</a>
         </div>
 

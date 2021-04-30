@@ -15,9 +15,15 @@
 
     <title>AdminKit Demo - Bootstrap 5 Admin Template</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/jquery-ui.css">
 
     <link href="/assets/css/app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- <style>
+    .ui-autocomplete {
+z-index: 100;
+}
+    </style> -->
 </head>
 
 <body>
@@ -384,10 +390,12 @@
 
 
     <script src="/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="/assets/js/app.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <?= $this->renderSection('config'); ?>
+    <script src="/assets/js/custom.js"></script>
 </body>
 
 </html>

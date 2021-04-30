@@ -8,9 +8,7 @@
         <div class="row mb-3">
             <div class="col-md-12 d-inline-flex justify-content-between">
                 <h1 class="h3 mb-3">Item Order List</h1>
-                <button type="button" class="btn btn-sm btn-primary pl-4 pr-4" data-toggle="modal"
-                    data-target="#newCategoryModal">New
-                    Order</button>
+                <a href="/order/new_order" class="btn btn-primary">New Order</a>
             </div>
         </div>
 
@@ -34,8 +32,9 @@
                         <tbody>
                             <?php foreach($orders as $o):?>
                             <tr>
-                                <td><img src="/assets/img/product/<?= $o['picture']?>" alt="Product Picture" srcset=""
-                                        width="150"></td>
+                                <td><img src="/assets/img/product/<?= $o['picture']?>" alt="Product Picture" srcset="" width="100">
+                                <h5 class="font-weight-bold pt-2">Order No : #<?= $o['no_order']?></h5>
+                                </td>
                                 <td>
                                     <div class="row">
                                         <div class="col-md-3 text-right font-weight-bold">Quantity :</div>

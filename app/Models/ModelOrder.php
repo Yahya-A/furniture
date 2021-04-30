@@ -26,4 +26,9 @@ class ModelOrder extends Model
         return $this->where([$this->primaryKey => $id_order])->first();
     }
 
+    public function getLastID(){
+        $this->orderBy('no_order', 'DESC');
+        return $this->findAll(1);
+    }
+
 }

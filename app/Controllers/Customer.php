@@ -164,6 +164,26 @@ class Customer extends BaseController
         return redirect()->to('list_customer');
     }
 
+    public function findCustomer(){
+        $key = $this->request->getPost('key');
+        $customer = $this->mCustomer->getCustomerBy($key, 'name');
+        $data = [
+            'customer'   => $customer,
+        ];
+
+        return $this->response->setJSON($data);
+    }
+
+    public function getCustomer(){
+        $key = $this->request->getPost('key');
+        $customer = $this->mCustomer->getCustomer($key);
+        $data = [
+            'customer'   => $customer,
+        ];
+
+        return $this->response->setJSON($data);
+    }
+
     private function _get_browser($user_agent){
         $browser_name;
         if (strpos($user_agent, 'Opera') || strpos($user_agent, 'OPR/')) {

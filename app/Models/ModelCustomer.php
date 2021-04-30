@@ -25,4 +25,16 @@ class ModelCustomer extends Model
         }
         return $this->where('customer.id_customer', $id_cus)->first();
     }
+
+    public function getCustomerBy($key = false, $by = '')
+    {
+        if ($by == 'name') {
+            $this->like('company_name', $key);
+            $this->orderBy('company_name');
+            return $this->findAll(5);
+        } else{
+            $this->where($by, $key);
+            return $this->findAll();
+        }
+    }
 }
