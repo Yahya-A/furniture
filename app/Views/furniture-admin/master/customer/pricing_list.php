@@ -6,9 +6,9 @@
     <div class="container-fluid p-0">
         <div class="row mb-3">
             <div class="col-md-12 d-inline-flex justify-content-between">
-                <h1 class="h3 mb-3">List Category</h1>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPriceModal">New
-                    Price</button>
+                <h1 class="h3 mb-3">Role Customer</h1>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newRoleModal">New
+                    Role</button>
             </div>
         </div>
         <div class="row">
@@ -20,9 +20,9 @@
                         <thead>
                             <tr>
                                 <th width="5%">No</th>
-                                <th>Namel</th>
+                                <th>Name Role</th>
                                 <th>Description</th>
-                                <th>Rate</th>
+                                <th>Rate Price</th>
                                 <th width="20%"></th>
                             </tr>
                         </thead>
@@ -50,10 +50,10 @@
                                     <div class="btn-group btn-group-sm" role="group">
                                         <!-- <a class="btn btn-secondary btn-sm" href="/product/categories?q=">See Product</a> -->
                                         <a class="btn btn-secondary btn-sm" data-toggle="modal"
-                                            data-target="#updatePriceModal<?= $p['id_price']?>"><i
+                                            data-target="#updateRoleModal<?= $p['id_price']?>"><i
                                                 data-feather="edit"></i></a>
                                         <a class="btn btn-secondary btn-sm" data-toggle="modal"
-                                            data-target="#deletePriceModal<?= $p['id_price']?>"><i
+                                            data-target="#deleteRoleModal<?= $p['id_price']?>"><i
                                                 data-feather="trash-2"></i></a>
                                     </div>
                                 </td>
@@ -77,12 +77,12 @@
 <?= $this->section('modal'); ?>
 
 <!-- Modal -->
-<div class="modal fade" id="newPriceModal" tabindex="-1" role="dialog" aria-labelledby="newPriceModalLabel"
+<div class="modal fade" id="newRoleModal" tabindex="-1" role="dialog" aria-labelledby="newRoleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="PriceModalLabel">Add Price</h5>
+                <h5 class="modal-title" id="RoleModalLabel">Add Role</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save Category</button>
+                    <button type="submit" class="btn btn-primary">Save Role</button>
                 </div>
             </form>
         </div>
@@ -120,17 +120,18 @@
 
 <!-- Modal Edit -->
 <?php foreach($price as $p):?>
-<div class="modal fade" id="updatePriceModal<?= $p['id_price']?>" tabindex="-1" role="dialog"
-    aria-labelledby="newPriceModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateRoleModal<?= $p['id_price']?>" tabindex="-1" role="dialog"
+    aria-labelledby="newRoleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="PriceModalLabel">Update Price</h5>
+                <h5 class="modal-title" id="RoleModalLabel">Update Role</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form action="/pricing/save_price" method="post">
+            <input type="hidden" name="id_price" value="<?= $p['id_price']?>">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
@@ -153,7 +154,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save Category</button>
+                    <button type="submit" class="btn btn-primary">Update Role</button>
                 </div>
             </form>
         </div>
@@ -164,12 +165,12 @@
 
 <!-- Modal Delete -->
 <?php foreach($price as $p):?>
-<div class="modal fade" id="deletePriceModal<?= $p['id_price']?>" tabindex="-1" role="dialog"
-    aria-labelledby="newPriceModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteRoleModal<?= $p['id_price']?>" tabindex="-1" role="dialog"
+    aria-labelledby="newRoleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-danger">
-                <h5 class="modal-title text-white" id="PriceModalLabel">Delete Category</h5>
+                <h5 class="modal-title text-white" id="RoleModalLabel">Delete Role</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

@@ -22,6 +22,12 @@ class ModelCustomerAccount extends Model
         return $this->where('id_customer', $id_cus)->first();
     }
 
+    public function checkAccount($email)
+    {
+        $this->join('customer', 'customer.id_customer = customer_account.id_account');
+        return $this->where('email', $email)->first();
+    }
+
     public function saveAccount($data){
         $this->insert($data);
     }

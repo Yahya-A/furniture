@@ -10,12 +10,18 @@ class LogsLogin extends Migration
 	{
 		//
 		$this->forge->addField([
+			'id'	=> [
+				'type'			=>	'INT',
+				'constraint'	=>	100,
+				'unsigned'		=> true,
+				'auto_increment'=>	true,
+			],
 			'email'	=> [
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	50,
 			],
 			'login_date'	=> [
-				'type'			=>	'TIMESTAMP',
+				'type'			=>	'BIGINT',
 			],
 			'ip_address'	=> [
 				'type'			=>	'VARCHAR',
@@ -25,7 +31,15 @@ class LogsLogin extends Migration
 				'type'			=>	'VARCHAR',
 				'constraint'	=>	50,
 			],
+			'created_at'	=> [
+				'type'			=>	'DATETIME',
+			],
+			'updated_at'	=> [
+				'type'			=>	'DATETIME',
+			],
 		]);
+
+		$this->forge->addKey('id', true);
 
 		$this->forge->createTable('logs_login', true);
 	}

@@ -8,7 +8,7 @@ function menu($for){
             'customer'       => [
                 'new'   => ($for == 'customer_new' ? 'active' : ''),
                 'list'  => ($for == 'customer_list' ? 'active' : ''),
-                'price'  => ($for == 'price' ? 'active' : ''),
+                'role'  => ($for == 'role' ? 'active' : ''),
             ],
             'product'       => [
                 'new'   => ($for == 'product_new' ? 'active' : ''),

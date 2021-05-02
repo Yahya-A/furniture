@@ -31,7 +31,7 @@ z-index: 100;
         <nav id="sidebar" class="sidebar">
             <div class="sidebar-content js-simplebar">
                 <a class="sidebar-brand" href="index.html">
-                    <span class="align-middle">AdminKit</span>
+                    <span class="align-middle">Furniture</span>
                 </a>
 
                 <ul class="sidebar-nav">
@@ -39,7 +39,7 @@ z-index: 100;
                         Admin
                     </li>
                     <li class="sidebar-item <?= $active_menu['dashboard']?>">
-                        <a class="sidebar-link" href="/">
+                        <a class="sidebar-link" href="/furniture-admin">
                             <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
                         </a>
                     </li>
@@ -55,19 +55,19 @@ z-index: 100;
                         </a>
                     </li> -->
                     <li
-                        class="sidebar-item <?= ($active_menu['customer']['list'] || $active_menu['customer']['new'] != "" ? 'active' : '')?>">
+                        class="sidebar-item <?= ($active_menu['customer']['list'] || $active_menu['customer']['new'] || $active_menu['customer']['role'] != "" ? 'active' : '')?>">
                         <a data-bs-target="#customer" data-bs-toggle="collapse" class="sidebar-link collapsed">
                             <i class="align-middle" data-feather="users"></i> <span class="align-middle">Customer</span>
                         </a>
                         <ul id="customer"
-                            class="sidebar-dropdown list-unstyled  <?= ($active_menu['customer']['list'] || $active_menu['customer']['new'] != "" ? 'collapsed' : 'collapse')?>"
+                            class="sidebar-dropdown list-unstyled  <?= ($active_menu['customer']['list'] || $active_menu['customer']['new'] || $active_menu['customer']['role'] != "" ? 'collapsed' : 'collapse')?>"
                             data-bs-parent="#sidebar">
                             <li class="sidebar-item <?= $active_menu['customer']['new']?>"><a class="sidebar-link"
-                                    href="/customer/new_customer">New Customer</a></li>
+                                    href="/furniture-admin/customer/new">New Customer</a></li>
                             <li class="sidebar-item <?= $active_menu['customer']['list']?>"><a class="sidebar-link"
-                                    href="/customer/list_customer">List Customer</a></li>
-                            <li class="sidebar-item <?= $active_menu['customer']['price']?>"><a class="sidebar-link"
-                                    href="/pricing/price_list">Pricing Role</a></li>
+                                    href="/furniture-admin/customer/list">List Customer</a></li>
+                            <li class="sidebar-item <?= $active_menu['customer']['role']?>"><a class="sidebar-link"
+                                    href="/furniture-admin/customer/role">Role Customer</a></li>
                     </li>
                 </ul>
                 </li>
@@ -80,11 +80,11 @@ z-index: 100;
                         class="sidebar-dropdown list-unstyled  <?= ($active_menu['product']['list'] || $active_menu['product']['new'] || $active_menu['product']['categories'] != "" ? 'collapsed' : 'collapse')?>"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item <?= $active_menu['product']['new']?>"><a class="sidebar-link"
-                                href="/product/new_product">New Product</a></li>
+                                href="/furniture-admin/product/new">New Product</a></li>
                         <li class="sidebar-item <?= $active_menu['product']['list']?>"><a class="sidebar-link"
-                                href="/product/list_product">List Product</a></li>
+                                href="/furniture-admin/product/list">List Product</a></li>
                         <li class="sidebar-item <?= $active_menu['product']['categories']?>"><a class="sidebar-link"
-                                href="/categories/list_category">Category Product</a></li>
+                                href="/furniture-admin/product/category">Category Product</a></li>
                 </li>
                 </ul>
                 </li>
@@ -109,8 +109,8 @@ z-index: 100;
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item <?= $active_menu['order']['item_order']?>"><a class="sidebar-link"
                                 href="/order/list_item_order">Item Order</a></li>
-                        <li class="sidebar-item <?= $active_menu['order']['showroom_order']?>"><a class="sidebar-link"
-                                href="/customer/list_customer">Showroom Order</a></li>
+                        <!-- <li class="sidebar-item <?= $active_menu['order']['showroom_order']?>"><a class="sidebar-link"
+                                href="/customer/list_customer">Showroom Order</a></li> -->
                 </li>
                 </ul>
                 <!-- <li class="sidebar-item">
@@ -119,7 +119,7 @@ z-index: 100;
                                 class="align-middle">Order</span>
                         </a>
                     </li> -->
-                <li class="sidebar-item">
+                <!-- <li class="sidebar-item">
                     <a class="sidebar-link" href="charts-chartjs.html">
                         <i class="align-middle" data-feather="rotate-ccw"></i> <span class="align-middle">Return
                             Order</span>
@@ -132,14 +132,14 @@ z-index: 100;
                 </li>
                 <li class="sidebar-header">
                     More
-                </li>
+                </li> -->
 
-                <li class="sidebar-item">
+                <!-- <li class="sidebar-item">
                     <a class="sidebar-link" href="charts-chartjs.html">
                         <i class="align-middle" data-feather="bar-chart-2"></i> <span
                             class="align-middle">Setting</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="charts-chartjs.html">
                         <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Logs</span>
@@ -179,7 +179,7 @@ z-index: 100;
 
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav navbar-align">
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
                                 <div class="position-relative">
                                     <i class="align-middle" data-feather="bell"></i>
@@ -247,8 +247,8 @@ z-index: 100;
                                     <a href="#" class="text-muted">Show all notifications</a>
                                 </div>
                             </div>
-                        </li>
-                        <li class="nav-item dropdown">
+                        </li> -->
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown"
                                 data-bs-toggle="dropdown">
                                 <div class="position-relative">
@@ -324,7 +324,7 @@ z-index: 100;
                                     <a href="#" class="text-muted">Show all messages</a>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
                         <li class="nav-item dropdown">
                             <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
                                 data-bs-toggle="dropdown">
@@ -333,8 +333,9 @@ z-index: 100;
 
                             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
                                 data-bs-toggle="dropdown">
-                                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1"
-                                    alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
+                                <!-- <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1"
+                                    alt="Charles Hall" />  -->
+                                    <span class="text-dark"><?= session()->get('name')?></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"
@@ -347,7 +348,7 @@ z-index: 100;
                                 <a class="dropdown-item" href="#"><i class="align-middle me-1"
                                         data-feather="help-circle"></i> Help Center</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Log out</a>
+                                <a class="dropdown-item" href="/logout">Log out</a>
                             </div>
                         </li>
                     </ul>
@@ -363,10 +364,10 @@ z-index: 100;
                     <div class="row text-muted">
                         <div class="col-6 text-start">
                             <p class="mb-0">
-                                <a href="index.html" class="text-muted"><strong>AdminKit Demo</strong></a> &copy;
+                                <a href="index.html" class="text-muted"><strong>Admin Furniture</strong></a> &copy;
                             </p>
                         </div>
-                        <div class="col-6 text-end">
+                        <!-- <div class="col-6 text-end">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <a class="text-muted" href="#">Support</a>
@@ -381,7 +382,7 @@ z-index: 100;
                                     <a class="text-muted" href="#">Terms</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </footer>
@@ -390,7 +391,7 @@ z-index: 100;
 
 
     <script src="/assets/js/jquery-3.6.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="/assets/js/jquery-ui.min.js"></script>
     <script src="/assets/js/app.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 

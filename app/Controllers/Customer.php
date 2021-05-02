@@ -20,6 +20,18 @@ class Customer extends BaseController
         $this->mPricing= new ModelPricing();
     }
 
+    public function index(){
+        $customer = $this->mCustomer->getCustomer();
+        $active = \menu('customer_list');
+
+        $data   = [
+            'customer'      => $customer,
+            'active_menu'   => $active
+        ];
+
+		return view('furniture-admin/master/customer/list_customer', $data);
+    }
+
     // public function test(){
     //     echo $_SERVER['HTTP_USER_AGENT'];
     // }

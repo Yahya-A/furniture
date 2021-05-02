@@ -20,6 +20,18 @@ class Product extends BaseController
         $this->mSubCategories = new ModelSubCategories();
     }
 
+    public function index(){
+        $product = $this->mProduct->getProduct();
+        $active = \menu('product_list');
+
+        $data   = [
+            'product'       => $product,
+            'active_menu'   => $active
+        ];
+
+		return view('furniture-admin/master/product/list_product', $data);
+    }
+
 	public function categories()
 	{
         $id_categories = \base64_decode($this->request->getGet('q'));

@@ -33,6 +33,36 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/register', 'Home::register');
+$routes->get('/furniture-admin/login', 'Login::index');
+// $routes->get('/furniture-admin/auth', 'Login::auth');
+$routes->get('/logout', 'Login::logout');
+// $routes->get('/furniture-admin/customer', 'Customer::index');
+
+$routes->group('furniture-admin', ['filter' => 'auth'], function($routes){
+	$routes->get('/', 'Home::dashboard');
+	// route group for customer
+	$routes->group('customer', function($routes){
+		$routes->get('/', 'Customer::index');
+		$routes->get('new', 'Customer::new_customer');
+		$routes->get('list', 'Customer::list_customer');
+		$routes->get('role', 'Pricing::price_list');
+	});
+	// route group for product
+	$routes->group('product', function($routes){
+		$routes->get('/', 'Product::index');
+		$routes->get('new', 'Product::new_product');
+		$routes->get('list', 'Product::list_product');
+		$routes->get('category', 'Categories::list_category');
+	});
+	// route group for order
+	$routes->group('order', function($routes){
+		$routes->get('/', 'Product::index');
+		$routes->get('item', 'Product::new_product');
+		$routes->get('showroom', 'Product::list_product');
+		// $routes->get('category', 'Categories::list_category');
+	});
+});
 
 /*
  * --------------------------------------------------------------------

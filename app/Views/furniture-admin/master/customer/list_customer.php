@@ -44,7 +44,7 @@
                                 <td class="d-none d-lg-table-cell"><?= strtoupper($c['price_name'])?></td>
                                 <td>
                                     <div class="btn-group-vertical btn-group-sm" role="group">
-                                        <a class="btn btn-secondary btn-sm" href="#"><i data-feather="info"></i></a>
+                                        <!-- <a class="btn btn-secondary btn-sm" href="#"><i data-feather="info"></i></a> -->
                                         <a class="btn btn-secondary btn-sm" href="/customer/update_customer?id=<?= base64_encode($c['id_customer'])?>"><i data-feather="edit"></i></a>
                                         <a class="btn btn-secondary btn-sm" href="/customer/delete_customer?id=<?= base64_encode($c['id_customer'])?>"><i data-feather="trash-2"></i></a>
                                     </div>

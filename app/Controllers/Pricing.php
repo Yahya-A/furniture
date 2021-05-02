@@ -17,7 +17,7 @@ class Pricing extends BaseController
 
 	public function price_list()
 	{
-		$active = \menu('price');
+		$active = \menu('role');
 		$price = $this->mPricing->getPrice();
 		$data = [
             'active_menu'   => $active,
@@ -45,7 +45,7 @@ class Pricing extends BaseController
 
         if (!empty($id_price)) {
                 $price = [
-                    'id_pricing'   => $id_price,
+                    'id_price'   => $id_price,
                     'price_name'      => $price_name,
                     'description'      => $desc,
                     'rate'      => $rate,
@@ -57,7 +57,7 @@ class Pricing extends BaseController
                     'rate'      => $rate,
                 ];
         }
-
+        // \dd($price);
         $this->mPricing->save($price);
 
         return redirect()->to('price_list');
