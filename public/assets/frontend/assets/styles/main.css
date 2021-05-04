@@ -784,6 +784,21 @@ ul.butttts li {
     border: solid 1px #333;
 }
 
+button {
+    padding-right: 28px;
+    padding: 6px 14px;
+    margin-bottom: 1px;
+    background-color: #000;
+    color: #CCC;
+    border: solid 1px #333;
+}
+
+button:hover {
+    background-color: #999;
+    color: #ccc;
+    border: solid 1px #333;
+}
+
 ul.butttts li a {
     color: #FFFFFF;
 }
@@ -1393,12 +1408,15 @@ p.formMessage {
     margin: 0 !important;
 }
 
-.form-wrapper input[type=text] {
+.form-wrapper input[type=text],
+input[type=password],
+select {
     height: 35px;
 }
 
 .form-wrapper input[type=text],
-.form-wrapper textarea {
+input[type=password],
+select .form-wrapper textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
