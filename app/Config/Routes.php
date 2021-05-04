@@ -41,6 +41,13 @@ $routes->get('/logout', 'Login::logout');
 
 $routes->group('furniture-admin', ['filter' => 'auth'], function($routes){
 	$routes->get('/', 'Home::dashboard');
+	// $routes->get('logs', 'Logs::logs');
+	// route group for logs
+	$routes->group('logs', function($routes){
+		$routes->get('/', 'Logs::logs');
+		$routes->get('detail', 'Logs::detail_logs');
+	});
+	// route group for product
 	// route group for customer
 	$routes->group('customer', function($routes){
 		$routes->get('/', 'Customer::index');
@@ -60,6 +67,7 @@ $routes->group('furniture-admin', ['filter' => 'auth'], function($routes){
 		$routes->get('/', 'Product::index');
 		$routes->get('item', 'Product::new_product');
 		$routes->get('showroom', 'Product::list_product');
+		$routes->get('return', 'Order::list_return_order');
 		// $routes->get('category', 'Categories::list_category');
 	});
 });

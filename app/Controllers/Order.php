@@ -67,6 +67,41 @@ class Order extends BaseController
 		return view('furniture-admin/transactions/order/item_order', $data);
 	}
 
+	public function list_return_order(){
+		$active = \menu('return');
+		$orders = $this->mOrder->getOrder(false, true);
+		$data = [
+            'active_menu'   => $active,
+            'orders'   => $orders
+        ];
+
+		return view('furniture-admin/transactions/return/return_order', $data);
+	}
+
+	public function return_order(){
+		$id_order = \base64_decode($this->request->getGet('id'));
+		$cek_order = $this->mOrder->getOrder($id_order);
+		$id_prod = $cek_order['id_prod'];
+		$return_stock = $cek_order['qty'];
+		$cek_stock = $this->mProduct->getProduct($id_prod);
+		$stock = $cek_stock['stock']+$return_stock;
+		// \dd($id_order);
+		$update_stock = [
+			'id_prod'	=> $cek_order['id_prod'],
+			'stock'			=> $stock
+		];
+
+		$this->mProduct->save($update_stock);
+
+		$return_order = [
+			'id_order'	=> $id_order,
+			'status'			=> 'cancel'
+		];
+
+		$this->mOrder->save($return_order);
+
+		return \redirect()->to('/furniture-admin/order/return');
+	}
 	public function save_order(){
 		
 		$cek_no_order = $this->mOrder->getOrder();

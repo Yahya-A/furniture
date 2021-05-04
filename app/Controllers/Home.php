@@ -14,9 +14,9 @@ class Home extends BaseController
 		return view('furniture/home');
 	}
 
-    public function test(){
-        \dd(\get_browser($_SERVER['HTTP_USER_AGENT']));
-    }
+    // public function test(){
+    //     \dd(\get_browser($_SERVER['HTTP_USER_AGENT']));
+    // }
 
     public function dashboard(){
         // \dd(session()->get());
@@ -26,6 +26,18 @@ class Home extends BaseController
         ];
 
         return view('furniture-admin/dashboard', $data);
+    }
+
+    public function logs(){
+        // \dd(session()->get());
+        
+
+        $active = \menu('logs');
+		$data = [
+            'active_menu'   => $active
+        ];
+
+        return view('furniture-admin/setting/logs_login', $data);
     }
 
 	public function register(){

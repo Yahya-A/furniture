@@ -12,18 +12,24 @@ class ModelOrder extends Model
     protected $allowedFields = ['id_order', 'no_order', 'id_prod', 'note', 'width', 'depth', 'height', 'weight', 'qty', 'total_price', 'order_type', 'date_order', 'date_accepted', 'status', 'id_customer'];
     protected $useTimestamps = true;
 
-    public function getOrder($id_order = false)
+    public function getOrder($id_order = false, $return = false)
     {
         $this->select('orders.*');
         $this->select('product.*');
         $this->select('customer.company_name');
         $this->join('product', 'product.id_prod = orders.id_prod');
         $this->join('customer', 'customer.id_customer = orders.id_customer');
-        if ($id_order == false) {
+        if ($id_order == false && $return == false) {
+            $this->where('status', 'accept');
+            $this->orWhere('status', 'pending');
             return $this->findAll();
+        }else if($id_order == false && $return == true){
+            $this->where('status', 'accept');
+            return $this->findAll();
+        }else{
+            return $this->where([$this->primaryKey => $id_order])->first();
         }
 
-        return $this->where([$this->primaryKey => $id_order])->first();
     }
 
     public function getLastID(){
