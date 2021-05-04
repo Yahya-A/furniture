@@ -100,17 +100,19 @@ z-index: 100;
                 </li>
 
                 <li
-                    class="sidebar-item <?= ($active_menu['order']['item_order'] || $active_menu['order']['showroom_order'] != "" ? 'active' : '')?>">
+                    class="sidebar-item <?= ($active_menu['order']['item_order'] || $active_menu['order']['showroom_order'] || $active_menu['order']['return_order'] != "" ? 'active' : '')?>">
                     <a data-bs-target="#order" data-bs-toggle="collapse" class="sidebar-link collapsed">
                         <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Order</span>
                     </a>
                     <ul id="order"
-                        class="sidebar-dropdown list-unstyled  <?= ($active_menu['order']['item_order'] || $active_menu['order']['showroom_order'] != "" ? 'collapsed' : 'collapse')?>"
+                        class="sidebar-dropdown list-unstyled  <?= ($active_menu['order']['item_order'] || $active_menu['order']['showroom_order'] || $active_menu['order']['return_order'] != "" ? 'collapsed' : 'collapse')?>"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item <?= $active_menu['order']['item_order']?>"><a class="sidebar-link"
                                 href="/order/list_item_order">Item Order</a></li>
-                        <!-- <li class="sidebar-item <?= $active_menu['order']['showroom_order']?>"><a class="sidebar-link"
-                                href="/customer/list_customer">Showroom Order</a></li> -->
+                        <li class="sidebar-item <?= $active_menu['order']['showroom_order']?>"><a class="sidebar-link"
+                                href="/customer/list_customer">Showroom Order</a></li>
+                        <li class="sidebar-item <?= $active_menu['order']['return_order']?>"><a class="sidebar-link"
+                                href="/furniture-admin/order/return">Return Order</a></li>
                 </li>
                 </ul>
                 <!-- <li class="sidebar-item">
@@ -120,11 +122,11 @@ z-index: 100;
                         </a>
                     </li> -->
                 <!-- <li class="sidebar-item">
-                    <a class="sidebar-link" href="charts-chartjs.html">
+                    <a class="sidebar-link" href="/order/return">
                         <i class="align-middle" data-feather="rotate-ccw"></i> <span class="align-middle">Return
                             Order</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="charts-chartjs.html">
                         <i class="align-middle" data-feather="file"></i> <span class="align-middle">Report</span>
@@ -132,7 +134,7 @@ z-index: 100;
                 </li>
                 <li class="sidebar-header">
                     More
-                </li> -->
+                </li>
 
                 <!-- <li class="sidebar-item">
                     <a class="sidebar-link" href="charts-chartjs.html">
@@ -140,9 +142,12 @@ z-index: 100;
                             class="align-middle">Setting</span>
                     </a>
                 </li> -->
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="charts-chartjs.html">
-                        <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Logs</span>
+                <li class="sidebar-header">
+                    Analytics
+                </li>
+                <li class="sidebar-item <?= $active_menu['logs']?>">
+                    <a class="sidebar-link" href="/furniture-admin/logs">
+                        <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Log Login</span>
                     </a>
                 </li>
                 <div class="sidebar-cta">

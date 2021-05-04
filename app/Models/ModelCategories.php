@@ -12,10 +12,10 @@ class ModelCategories extends Model
     protected $allowedFields = ['id_categories', 'parent_category'];
     protected $useTimestamps = true;
 
-    public function getCategory($id_categories = false)
+    public function getCategory($id_categories = false, $limit = '')
     {
         if ($id_categories == false) {
-            return $this->findAll();
+            return $this->findAll($limit);
         }
 
         return $this->where([$this->primaryKey => $id_categories])->first();

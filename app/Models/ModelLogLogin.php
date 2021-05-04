@@ -12,13 +12,29 @@ class ModelLogLogin extends Model
     protected $allowedFields = ['email', 'login_date', 'ip_address', 'browser'];
     protected $useTimestamps = true;
 
-    public function getLogsLogin()
+    public function getLogsLogin($by = false)
     {
+        if ($by == false) {
             return $this->findAll();
-        // if ($email == false) {
-        //     return $this->findAll();
-        // }
+        }
 
-        // return $this->where([$this->primaryKey => $id_categories])->first();
+        $this->like('created_at', $by.'%');
+        return $this->findAll();
+    }
+
+    public function getBrowser($by = false){
+
+        if ($by == false) {
+            $this->select('browser');
+            $this->selectCount('email');
+            $this->groupBy('browser');
+            return $this->findAll();
+        }
+
+        $this->select('browser');
+        $this->selectCount('email');
+        $this->groupBy('browser');
+        $this->like('created_at', $by.'%');
+        return $this->findAll();
     }
 }

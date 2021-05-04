@@ -17,8 +17,10 @@ function menu($for){
             ],
             'order'       => [
                 'item_order'   => ($for == 'item_order' ? 'active' : ''),
-                'showroom_order'  => ($for == 'showroom' ? 'active' : '')
+                'showroom_order'  => ($for == 'showroom' ? 'active' : ''),
+                'return_order'  => ($for == 'return' ? 'active' : '')
             ],
+            'logs'          => ($for == 'logs' ? 'active' : ''),
         ];
 
         return $active_menu;

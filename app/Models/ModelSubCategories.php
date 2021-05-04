@@ -12,10 +12,10 @@ class ModelSubCategories extends Model
     protected $allowedFields = ['id_categories', 'sub_category'];
     protected $useTimestamps = true;
 
-    public function getSubCategory($id_categories = false)
+    public function getSubCategory($id_categories = false, $limit = '')
     {
         if ($id_categories == false) {
-            return $this->findAll();
+            return $this->findAll($limit);
         }
 
         return $this->where([$this->primaryKey => $id_categories])->first();
