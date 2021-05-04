@@ -4,16 +4,19 @@ namespace App\Controllers;
 
 use App\Models\ModelCategories;
 use App\Models\ModelSubCategories;
+use App\Models\ModelPricing;
 
 class Home extends BaseController
 {
     protected $mCategories;
     protected $mSubCategories;
+    protected $mPricing;
 
     public function __construct()
     {
         $this->mCategories = new ModelCategories();
         $this->mSubCategories = new ModelSubCategories();
+        $this->mPricing = new ModelPricing();
     }
 
     public function index()
@@ -87,9 +90,11 @@ class Home extends BaseController
     {
         $menu = $this->mCategories->getCategory(false, 4);
         $sub_menu = $this->mSubCategories->getSubCategory(false, 4);
+        $price = $this->mPricing->getPrice();
         $data = [
             'menu' => $menu,
-            'sub_menu' => $sub_menu
+            'sub_menu' => $sub_menu,
+            'price' => $price
         ];
         return view('furniture/register', $data);
     }
